@@ -1,0 +1,7 @@
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+shinyproxy-2.6.1.jar
+shinyproxy.log
+pyvenv/

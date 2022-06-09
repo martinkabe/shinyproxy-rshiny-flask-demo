@@ -1,0 +1,28 @@
+proxy:
+  title: Open Analytics Shiny Proxy
+  logo-url: https://www.openanalytics.eu/shinyproxy/logo.png
+  landing-page: /
+  heartbeat-rate: 10000
+  heartbeat-timeout: 60000
+  container-wait-time: 90000
+  port: 3838
+  # authentication: simple
+  # admin-groups: scientists
+  # # Example: 'simple' authentication configuration
+  # users:
+  # - name: jack
+  #   password: password
+  #   groups: scientists
+  # - name: jeff
+  #   password: password
+  #   groups: mathematicians
+  specs:
+    - id: shiny-flask-app
+      container-image: shiny-flask-app
+      port: 3838
+      container-env:
+        SCRIPT_NAME: "#{proxy.getRuntimeValue('SHINYPROXY_PUBLIC_PATH').replaceFirst('/$','')}"
+      # target-path: "#{proxy.getRuntimeValue('SHINYPROXY_PUBLIC_PATH')}"
+logging:
+  file:
+    name: shinyproxy.log
