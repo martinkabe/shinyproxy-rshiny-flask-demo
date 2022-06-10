@@ -10,3 +10,5 @@ exec gunicorn backend.app:app \
 echo Starting RShiny ...
 R -e "shiny::runApp('/root/frontend')"
 
+# In case of : not found error, run
+# dos2unix files/run.sh
