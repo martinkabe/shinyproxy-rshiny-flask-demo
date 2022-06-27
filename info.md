@@ -21,4 +21,7 @@ Download shinyproxy-2.6.1.jar from here: https://www.shinyproxy.io/downloads/shi
 java -jar shinyproxy-2.6.1.jar
 
 # If using Docker Desktop on Windows
-Go to Settings -> General -> check Expose daemon on tcp://localhost:2375 without TLS
+
+1. Set DOCKER_HOST into env variables as tcp://localhost:2375.
+2. Change docker desktop settings (go to Settings -> General -> be sure to check "Expose daemon on tcp://localhost:2375 without TLS").
+3. Restart the docker desktop.
