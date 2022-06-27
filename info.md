@@ -19,3 +19,6 @@ docker run -d -p 3838:3838 shiny-flask-app
 # Run docker image from shinyproxy
 Download shinyproxy-2.6.1.jar from here: https://www.shinyproxy.io/downloads/shinyproxy-2.6.1.jar
 java -jar shinyproxy-2.6.1.jar
+
+# If using Docker Desktop on Windows
+Go to Settings -> General -> check Expose daemon on tcp://localhost:2375 without TLS
