@@ -16,6 +16,7 @@ RUN apt-get update && \
     libssh2-1-dev \ 
     libxml2-dev \
     libv8-dev \
+    dos2unix \
     python3-pip \
     libmpfr-dev && \
     apt-get clean && \
@@ -33,6 +34,7 @@ COPY files/run.sh /opt/app
 WORKDIR /opt/app
 
 RUN pip install -r backend/requirements.txt
+RUN dos2unix ./run.sh && apt-get --purge remove -y dos2unix && rm -rf /var/lib/apt/lists/*
 RUN chmod +x ./run.sh
 
 # EXPOSE 3838

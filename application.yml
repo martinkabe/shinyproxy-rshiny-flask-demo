@@ -5,7 +5,8 @@ proxy:
   favicon-path: favicon.ico
   heartbeat-rate: 10000
   heartbeat-timeout: 600000
-  port: 8080
+  container-wait-time: 90000
+  port: 3838
   # authentication: simple
   # admin-groups: admins
   # # Example: 'simple' authentication configuration
@@ -22,27 +23,15 @@ proxy:
     url: http://localhost:2375
     port-range-start: 20000
   specs:
-    # - id: 01_hello
-    #   display-name: Hello Shiny App
-    #   description: A simple reactive histogram
-    #   container-cmd: ["R", "-e", "shiny::runApp('/home/app')"]
-    #   container-image: registry.gitlab.com/analythium/shinyproxy-hello/hello:latest
-    #   logo-url: https://github.com/analythium/shinyproxy-1-click/raw/master/digitalocean/images/app-hist.png
-    #   access-groups: [admins, users]
-    # - id: 02_hello
-    #   display-name: Demo Shiny App
-    #   description: App with sliders and large file upload
-    #   container-cmd: ["R", "-e", "shiny::runApp('/home/app')"]
-    #   container-image: analythium/shinyproxy-demo:latest
-    #   logo-url: https://github.com/analythium/shinyproxy-1-click/raw/master/digitalocean/images/app-dots.png
-    #   access-groups: [admins]
     - id: rshiny-flask-app
       display-name: test Shiny App
       description: R shiny with Python Flask backend
       container-cmd: ["sh", "run.sh"]
       container-image: rshiny-flask-app
-      #logo-url: https://github.com/analythium/shinyproxy-1-click/raw/master/digitalocean/images/app-dots.png
       access-groups: [admins, users]
+      # container-env:
+      #   SCRIPT_NAME: "#{proxy.getRuntimeValue('SHINYPROXY_PUBLIC_PATH').replaceFirst('/$','')}"
+      #target-path: "#{proxy.getRuntimeValue('SHINYPROXY_PUBLIC_PATH')}"
 
 logging:
   file:
